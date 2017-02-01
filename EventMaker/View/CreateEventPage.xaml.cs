@@ -31,5 +31,10 @@ namespace EventMaker.View
         {
 
         }
+
+        private void appBarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

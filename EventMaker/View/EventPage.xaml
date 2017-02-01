@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ViewModel="using:EventMaker.ViewModel"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     x:Class="EventMaker.View.EventPage"
     mc:Ignorable="d">
 
@@ -19,7 +20,14 @@
 
 
 
-        <ListView x:Name="listView" Margin="10,10,10,292" SelectionChanged="listView_SelectionChanged" ItemsSource="{Binding SingletonRef.EventList}"/>
+        <ListView x:Name="listView" Margin="10,10,10,411" SelectionChanged="listView_SelectionChanged" ItemsSource="{Binding SingletonRef.EventList}"/>
+        <AppBarButton x:Name="appBarButton" HorizontalAlignment="Left" Icon="Forward" Label="Create New Event" Margin="169,407,0,0" VerticalAlignment="Top">
+            <Interactivity:Interaction.Behaviors>
+                <Core:EventTriggerBehavior EventName="Click">
+                    <Core:NavigateToPageAction TargetPage="EventMaker.View.CreateEventPage"/>
+                </Core:EventTriggerBehavior>
+            </Interactivity:Interaction.Behaviors>
+        </AppBarButton>
 
     </Grid>
 </Page>
