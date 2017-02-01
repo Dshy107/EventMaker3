@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using EventMaker.Model;
 using System.ComponentModel;
+using System.Windows.Input;
+using EventMaker.Common;
+using EventMaker.Handler;
 
 namespace EventMaker.ViewModel
 {
@@ -17,6 +20,8 @@ namespace EventMaker.ViewModel
         public string Place { get; set; }
         public DateTimeOffset Date { get; set; }
         public TimeSpan Time { get; set; }
+        public ICommand CreateEventCommand { get; set; }
+        private MyEventHandler EventHandler { get; set; }
 
         public EventViewModel()
         {
@@ -26,6 +31,9 @@ namespace EventMaker.ViewModel
             Time = new TimeSpan(dt.Hour, dt.Minute, dt.Second);
 
             SingletonRef = EventCatalogSingleton.Instance;
+            EventHandler = new MyEventHandler(this);
+
+            CreateEventCommand = new RelayCommand(EventHandler.CreateEvent);
         }
     }
 }

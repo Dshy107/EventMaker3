@@ -26,5 +26,10 @@ namespace EventMaker.View
         {
             this.InitializeComponent();
         }
+
+        private void textBlock1_Copy_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

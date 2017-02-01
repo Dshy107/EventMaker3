@@ -9,13 +9,13 @@ using EventMaker.Converter;
 
 namespace EventMaker.Handler
 {
-    class EventHandler
+    class MyEventHandler
     {
         EventViewModel eventVM;
 
-        public EventHandler()
+        public MyEventHandler(EventViewModel ev)
         {
-            eventVM = new EventViewModel();
+            eventVM = ev;
         }
 
         public void CreateEvent()
