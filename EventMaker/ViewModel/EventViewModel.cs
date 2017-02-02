@@ -13,7 +13,7 @@ namespace EventMaker.ViewModel
 {
     public class EventViewModel
     {
-        private RelayArgCommand<Event> _deleteEventCommand;
+
         public Model.EventCatalogSingleton SingletonRef { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
@@ -22,17 +22,7 @@ namespace EventMaker.ViewModel
         public DateTimeOffset Date { get; set; }
         public TimeSpan Time { get; set; }
         public RelayCommand CreateEventCommand { get; set; }
-        public RelayArgCommand<Event> DeleteEventCommand {
-            get
-            {
-                if (_deleteEventCommand == null)
-                {
-                    _deleteEventCommand = new RelayArgCommand<Event>( ev => EventHandler.DeleteEvent(ev));
-                }
-                return _deleteEventCommand;
-            }
-            private set { _deleteEventCommand = value; }
-        }
+       // public RelayArgCommand<Event> DeleteEventCommand { get; private set; }
         private MyEventHandler EventHandler { get; set; }
 
         public EventViewModel()
@@ -46,7 +36,7 @@ namespace EventMaker.ViewModel
             EventHandler = new MyEventHandler(this);
 
             CreateEventCommand = new RelayCommand(EventHandler.CreateEvent);
-            DeleteEventCommand = new RelayArgCommand<Event>( ev => EventHandler.DeleteEvent(ev));
+            //  DeleteEventCommand = new RelayArgCommand<Event>( ev => EventHandler.DeleteEvent(ev));
         }
     }
 }
