@@ -44,7 +44,7 @@ namespace EventMaker.ViewModel
             EventHandler = new MyEventHandler(this);
 
             CreateEventCommand = new RelayCommand(EventHandler.CreateEvent);
-            DeleteEventCommand = new RelayCommand();
+            //DeleteEventCommand = new RelayCommand();
             //  DeleteEventCommand = new RelayArgCommand<Event>( ev => EventHandler.DeleteEvent(ev));
         }
     }
