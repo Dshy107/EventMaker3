@@ -56,9 +56,9 @@ namespace EventMaker.Model
             }
         }
 
-
-
-
-        //Spørgsmål til opgave 1,6 : Hvorfor skal vi lave en Add-metode, da dette allerede eksistere i systemet gennem ObservableCollection?
+        public void AddEvent(Event newEvent)
+        {
+            EventList.Add(newEvent);
+        }
     }
 }
