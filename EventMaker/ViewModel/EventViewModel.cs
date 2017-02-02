@@ -14,6 +14,8 @@ namespace EventMaker.ViewModel
     public class EventViewModel
     {
 
+        private Event selectedEvent;
+
         public Model.EventCatalogSingleton SingletonRef { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
@@ -21,9 +23,15 @@ namespace EventMaker.ViewModel
         public string Place { get; set; }
         public DateTimeOffset Date { get; set; }
         public TimeSpan Time { get; set; }
-        public RelayCommand CreateEventCommand { get; set; }
+        public ICommand CreateEventCommand { get; set; }
+        public RelayCommand DeleteEventCommand { get; set; }
        // public RelayArgCommand<Event> DeleteEventCommand { get; private set; }
         private MyEventHandler EventHandler { get; set; }
+        public Event SelectedEvent
+        {
+            get { return selectedEvent; }
+            set { selectedEvent = value; }
+        }
 
         public EventViewModel()
         {
@@ -36,6 +44,7 @@ namespace EventMaker.ViewModel
             EventHandler = new MyEventHandler(this);
 
             CreateEventCommand = new RelayCommand(EventHandler.CreateEvent);
+            DeleteEventCommand = new RelayCommand();
             //  DeleteEventCommand = new RelayArgCommand<Event>( ev => EventHandler.DeleteEvent(ev));
         }
     }
