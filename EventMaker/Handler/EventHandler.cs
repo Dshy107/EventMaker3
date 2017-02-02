@@ -22,7 +22,12 @@ namespace EventMaker.Handler
         {
             Event newEvent = new Event(eventVM.Id, eventVM.Name, eventVM.Description, eventVM.Place, DateTimeConverter.DateTimeOffsetAndTimeSetToDateTime(eventVM.Date, eventVM.Time));
 
-            EventCatalogSingleton.Singleton.EventList.Add(newEvent);
+            EventCatalogSingleton.Instance.AddEvent(newEvent);
+        }
+
+        public void DeleteEvent(Event ev)
+        {
+            EventCatalogSingleton.Instance.RemoveEvent(ev);
         }
 
 

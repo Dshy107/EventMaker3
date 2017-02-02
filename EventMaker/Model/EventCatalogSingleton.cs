@@ -11,7 +11,6 @@ namespace EventMaker.Model
 {
     public class EventCatalogSingleton
     {
-        public static EventCatalogSingleton Singleton = new EventCatalogSingleton();
         public ObservableCollection<Event> EventList { get; set; }
         
         private static EventCatalogSingleton instance;
@@ -59,6 +58,12 @@ namespace EventMaker.Model
         public void AddEvent(Event newEvent)
         {
             EventList.Add(newEvent);
+        }
+
+        public void RemoveEvent(Event ev)
+        {
+            EventList.Remove(ev);
+            //opdater fil? - opgave 4 del 1
         }
     }
 }
