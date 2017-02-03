@@ -9,27 +9,32 @@
     x:Class="EventMaker.View.CreateEventPage"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF8D49BF" Offset="1"/>
+                <GradientStop Color="White"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.DataContext>
             <ViewModel:EventViewModel/>
         </Grid.DataContext>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="62,75,0,0" TextWrapping="Wrap" Text="{Binding Id, Mode=TwoWay}" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="62,137,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="62,75,0,0" TextWrapping="Wrap" Text="{Binding Id, Mode=TwoWay}" VerticalAlignment="Top" Width="151"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="62,137,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="62,50,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="62,112,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Margin="62,198,0,0" TextWrapping="Wrap" Text="{Binding Description, Mode=TwoWay}" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox1_Copy" HorizontalAlignment="Left" Margin="62,260,0,0" TextWrapping="Wrap" Text="{Binding Place, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Margin="62,198,0,0" TextWrapping="Wrap" Text="{Binding Description, Mode=TwoWay}" VerticalAlignment="Top" Width="151"/>
+        <TextBox x:Name="textBox1_Copy" HorizontalAlignment="Left" Margin="62,260,0,0" TextWrapping="Wrap" Text="{Binding Place, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="151"/>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="62,173,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="62,235,0,0" TextWrapping="Wrap" Text="Place" VerticalAlignment="Top" SelectionChanged="textBlock1_Copy_SelectionChanged"/>
-        <AppBarButton x:Name="appBarButton" HorizontalAlignment="Left" Icon="Accept" Label="Create Event" Margin="254,198,0,0" VerticalAlignment="Top" Command="{Binding CreateEventCommand}"/>
-        <AppBarButton x:Name="appBarButton1" HorizontalAlignment="Left" Icon="Back" Label="back" Margin="77,380,0,0" VerticalAlignment="Top">
+        <AppBarButton x:Name="appBarButton" HorizontalAlignment="Left" Icon="Accept" Label="Create Event" Margin="262,137,0,0" VerticalAlignment="Top" Command="{Binding CreateEventCommand}"/>
+        <AppBarButton x:Name="appBarButton1" HorizontalAlignment="Left" Icon="Back" Label="Go Back&#xD;&#xA;" Margin="101,332,0,0" VerticalAlignment="Top">
             <Interactivity:Interaction.Behaviors>
                 <Core:EventTriggerBehavior EventName="Click">
                     <Core:NavigateToPageAction TargetPage="EventMaker.View.EventPage"/>
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
         </AppBarButton>
-        <ListView x:Name="listView" Height="236" Margin="150,0,6,10" VerticalAlignment="Bottom" d:LayoutOverrides="LeftPosition, RightPosition" ItemsSource="{Binding SingletonRef.EventList}"/>
 
     </Grid>
 </Page>
