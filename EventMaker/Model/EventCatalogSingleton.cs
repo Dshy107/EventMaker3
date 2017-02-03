@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using EventMaker.Persistency;
 using Newtonsoft.Json;
+using EventMaker.ViewModel;
 
 namespace EventMaker.Model
 {
@@ -63,7 +64,7 @@ namespace EventMaker.Model
         public void RemoveEvent(Event ev)
         {
             EventList.Remove(ev);
-            //opdater fil? - opgave 4 del 1
+            //opdater fil - opgave 4 del 1
         }
     }
 }
