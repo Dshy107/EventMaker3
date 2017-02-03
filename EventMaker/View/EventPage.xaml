@@ -19,48 +19,59 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ScrollViewer>
             <Grid>
+                <StackPanel Margin="0,0,-44,0" Orientation="Horizontal">
 
-                <ListView ItemsSource="{Binding SingletonRef.EventList}" FontSize="8" SelectedItem="{Binding SelectedEvent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Border x:Name="border" BorderBrush="Red" BorderThickness="2"
-                                Padding="10" Margin="5" Width="900" Height="100">
-                                <StackPanel>
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition />
-                                            <ColumnDefinition />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
-                                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Id}"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
-                                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
-                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Place: "/>
-                                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Place}"/>
-                                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Description: "/>
-                                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Description}"/>
-                                    </Grid>
-                                </StackPanel>
-                            </Border>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    <StackPanel>
 
-                <AppBarButton x:Name="appBarButton" HorizontalAlignment="Left" Icon="Forward" Label="Create New Event" Margin="169,407,0,0" VerticalAlignment="Top">
-                    <Interactivity:Interaction.Behaviors>
-                        <Core:EventTriggerBehavior EventName="Click">
-                            <Core:NavigateToPageAction TargetPage="EventMaker.View.CreateEventPage"/>
-                        </Core:EventTriggerBehavior>
-                    </Interactivity:Interaction.Behaviors>
-                </AppBarButton>
-                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="27,352,0,343" TextWrapping="Wrap" Text="{Binding SelectedEvent}" Width="254"/>
-                <AppBarButton x:Name="appBarButton1" HorizontalAlignment="Left" Icon="Cancel" Label="Delete Event&#xA;" Margin="313,407,0,0" VerticalAlignment="Top" Command="{Binding DeleteEventCommand}"/>
+                        <ListView ItemsSource="{Binding SingletonRef.EventList}" FontSize="8" SelectedItem="{Binding SelectedEvent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border x:Name="border" BorderBrush="Purple" BorderThickness="2"
+                                        Padding="10" Margin="5" Width="900" Height="100">
+                                        <StackPanel>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Row="0" Grid.Column="0" Text="ID: "/>
+                                                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Id}"/>
+                                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Name: "/>
+                                                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+                                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Place: "/>
+                                                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Place}"/>
+                                                <TextBlock Grid.Row="3" Grid.Column="0" Text="Description: "/>
+                                                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Description}"/>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+                            <AppBarButton x:Name="appBarButton" HorizontalAlignment="Left" Icon="Forward" Label="Create New Event" VerticalAlignment="Top">
+                                <Interactivity:Interaction.Behaviors>
+                                    <Core:EventTriggerBehavior EventName="Click">
+                                        <Core:NavigateToPageAction TargetPage="EventMaker.View.CreateEventPage"/>
+                                    </Core:EventTriggerBehavior>
+                                </Interactivity:Interaction.Behaviors>
+                            </AppBarButton>
+                            <AppBarButton x:Name="appBarButton1" HorizontalAlignment="Left" Icon="Cancel" Label="Delete Event&#xA;" VerticalAlignment="Top" Command="{Binding DeleteEventCommand}"/>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding SelectedEvent}" Width="250"/>
+
+                </StackPanel>
 
             </Grid>
         </ScrollViewer>

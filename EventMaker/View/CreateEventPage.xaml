@@ -14,11 +14,11 @@
             <ViewModel:EventViewModel/>
         </Grid.DataContext>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="62,75,0,0" TextWrapping="Wrap" Text="{Binding Id, Mode=TwoWay}" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="62,137,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=OneWay}" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="62,137,0,0" TextWrapping="Wrap" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="62,50,0,0" TextWrapping="Wrap" Text="ID" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="62,112,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
         <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Margin="62,198,0,0" TextWrapping="Wrap" Text="{Binding Description, Mode=TwoWay}" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox1_Copy" HorizontalAlignment="Left" Margin="62,260,0,0" TextWrapping="Wrap" Text="{Binding Place, Mode=TwoWay}" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox1_Copy" HorizontalAlignment="Left" Margin="62,260,0,0" TextWrapping="Wrap" Text="{Binding Place, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="62,173,0,0" TextWrapping="Wrap" Text="Description" VerticalAlignment="Top"/>
         <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Margin="62,235,0,0" TextWrapping="Wrap" Text="Place" VerticalAlignment="Top" SelectionChanged="textBlock1_Copy_SelectionChanged"/>
         <AppBarButton x:Name="appBarButton" HorizontalAlignment="Left" Icon="Accept" Label="Create Event" Margin="254,198,0,0" VerticalAlignment="Top" Command="{Binding CreateEventCommand}"/>
