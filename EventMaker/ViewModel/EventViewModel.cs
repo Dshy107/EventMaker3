@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 using EventMaker.Common;
 using EventMaker.Handler;
+using Windows.Storage;
 
 namespace EventMaker.ViewModel
 {
@@ -29,6 +30,11 @@ namespace EventMaker.ViewModel
         public RelayCommand DeleteEventCommand { get; set; }
        // public RelayArgCommand<Event> DeleteEventCommand { get; private set; }
         private MyEventHandler EventHandler { get; set; }
+        public RelayCommand HentDataCommand { get; private set; }
+
+        StorageFolder localfolder = null;
+
+        private readonly string filnavn = "JsonText.jsonNY1";
 
 
 
@@ -58,6 +64,23 @@ namespace EventMaker.ViewModel
 
         }
 
+        //public async void HentdataFraDiskAsync()
+        //{
+        //    try
+        //    {
+        //        StorageFile file = await localfolder.GetFileAsync(filnavn);
+        //        string jsonText = await FileIO.ReadTextAsync(file);
+        //        this..Clear();
+        //        Filmliste.IndsætJson(jsonText);
+        //    }
+        //    catch (FileNotFoundException)
+        //    {
+        //        MessageDialog messageDialog = new MessageDialog("Har du husket at gemme?", "Fil ikke fundet");
+        //        await messageDialog.ShowAsync();
+        //    }
+
+        //}
+
         // Melder fejl - kan ikke finde OnPropertyChange?
         //[NotifyPropertyChangedInvocator]
         //protected virtual void OnPropertChanged(string propertyName = null)
@@ -74,6 +97,16 @@ namespace EventMaker.ViewModel
                 PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
             }
         }
+
+        //public RelayCommand(Action methodToExecute, Func<bool> methodToDetectCanExecute)
+        //{
+
+        //}
+
+        //public bool CanExecute(object parameter)
+        //{
+        //    return methodToDetectCanExecute == null ? true : methodToDetectCanExecute();
+        //}
 
 
         
