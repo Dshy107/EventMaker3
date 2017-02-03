@@ -53,10 +53,9 @@ namespace EventMaker.ViewModel
 
             CreateEventCommand = new RelayCommand(EventHandler.CreateEvent);
 
-            //DeleteEventCommand = new RelayCommand();
+            // DeleteEventCommand = new RelayCommand();
             //  DeleteEventCommand = new RelayArgCommand<Event>( ev => EventHandler.DeleteEvent(ev));
 
-            
         }
 
         // Melder fejl - kan ikke finde OnPropertyChange?
