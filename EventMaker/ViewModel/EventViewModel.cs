@@ -59,11 +59,14 @@ namespace EventMaker.ViewModel
 
             CreateEventCommand = new RelayCommand(EventHandler.CreateEvent);
 
-            // DeleteEventCommand = new RelayCommand();
+            DeleteEventCommand = new RelayCommand(DeleteSelected);
             //  DeleteEventCommand = new RelayArgCommand<Event>( ev => EventHandler.DeleteEvent(ev));
 
         }
-
+        public void DeleteSelected()
+        {
+            EventHandler.DeleteEvent(SelectedEvent);
+        }
         //public async void HentdataFraDiskAsync()
         //{
         //    try

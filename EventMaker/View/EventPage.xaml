@@ -57,7 +57,7 @@ Padding="10" Margin="5" Width="900" Height="120">
         <AppBarButton x:Name="appBarButton" HorizontalAlignment="Left" Icon="Forward" Label="Create New Event" Margin="169,407,0,0" VerticalAlignment="Top">
             <Interactivity:Interaction.Behaviors>
                 <Core:EventTriggerBehavior EventName="Click">
-                    <Core:NavigateToPageAction TargetPage="EventMaker.View.CreateEventPage"/>
+                    
 
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>

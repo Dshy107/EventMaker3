@@ -25,7 +25,6 @@
         <AppBarButton x:Name="appBarButton1" HorizontalAlignment="Left" Icon="Back" Label="back" Margin="77,380,0,0" VerticalAlignment="Top">
             <Interactivity:Interaction.Behaviors>
                 <Core:EventTriggerBehavior EventName="Click">
-                    <Core:NavigateToPageAction TargetPage="EventMaker.View.EventPage"/>
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
         </AppBarButton>
