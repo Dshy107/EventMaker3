@@ -11,10 +11,12 @@ using EventMaker.Handler;
 
 namespace EventMaker.ViewModel
 {
-    public class EventViewModel
+    public class EventViewModel : INotifyPropertyChanged
     {
 
-        private Event selectedEvent;
+        private Model.Event selectedEvent;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public Model.EventCatalogSingleton SingletonRef { get; set; }
         public int Id { get; set; }
@@ -27,10 +29,16 @@ namespace EventMaker.ViewModel
         public RelayCommand DeleteEventCommand { get; set; }
        // public RelayArgCommand<Event> DeleteEventCommand { get; private set; }
         private MyEventHandler EventHandler { get; set; }
-        public Event SelectedEvent
+
+
+
+        public Model.Event SelectedEvent
         {
             get { return selectedEvent; }
-            set { selectedEvent = value; }
+            set {
+                selectedEvent = value;
+                OnPropertyChanged(nameof(SelectedEvent));
+            }
         }
 
         public EventViewModel()
@@ -44,8 +52,31 @@ namespace EventMaker.ViewModel
             EventHandler = new MyEventHandler(this);
 
             CreateEventCommand = new RelayCommand(EventHandler.CreateEvent);
+
             //DeleteEventCommand = new RelayCommand();
             //  DeleteEventCommand = new RelayArgCommand<Event>( ev => EventHandler.DeleteEvent(ev));
+
+            
         }
+
+        // Melder fejl - kan ikke finde OnPropertyChange?
+        //[NotifyPropertyChangedInvocator]
+        //protected virtual void OnPropertChanged(string propertyName = null)
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
+
+
+
+        protected virtual void OnPropertyChanged(string PropertyName)
+        {
+            if (PropertyName != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
+            }
+        }
+
+
+        
     }
 }
