@@ -59,7 +59,7 @@ namespace EventMaker.ViewModel
 
             CreateEventCommand = new RelayCommand(EventHandler.CreateEvent);
 
-            DeleteEventCommand = new RelayCommand(DeleteSelected);
+            DeleteEventCommand = new RelayCommand(DeleteSelected, IsListEmptyCheck);
             //  DeleteEventCommand = new RelayArgCommand<Event>( ev => EventHandler.DeleteEvent(ev));
 
         }
@@ -101,17 +101,17 @@ namespace EventMaker.ViewModel
             }
         }
 
-        //public RelayCommand(Action methodToExecute, Func<bool> methodToDetectCanExecute)
-        //{
+        public bool IsListEmptyCheck()
+        {
+            if (SingletonRef.EventList.Count < 1)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
-        //}
-
-        //public bool CanExecute(object parameter)
-        //{
-        //    return methodToDetectCanExecute == null ? true : methodToDetectCanExecute();
-        //}
-
-
-        
     }
 }
