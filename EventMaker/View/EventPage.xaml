@@ -27,7 +27,7 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Border x:Name="border" BorderBrush="Purple" BorderThickness="2"
-                                        Padding="10" Margin="5" Width="900" Height="100">
+                                        Padding="10" Margin="5" Width="900" Height="105">
                                         <StackPanel>
                                             <Grid>
                                                 <Grid.RowDefinitions>

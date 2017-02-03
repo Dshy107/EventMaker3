@@ -9,6 +9,9 @@ using System.Windows.Input;
 using EventMaker.Common;
 using EventMaker.Handler;
 using Windows.Storage;
+using Newtonsoft.Json;
+using Windows.UI.Popups;
+using System.IO;
 
 namespace EventMaker.ViewModel
 {
@@ -34,7 +37,7 @@ namespace EventMaker.ViewModel
 
         StorageFolder localfolder = null;
 
-        private readonly string filnavn = "JsonText.jsonNY1";
+        private readonly string fileName = "JsonText.jsonNY1";
 
 
 
@@ -67,22 +70,29 @@ namespace EventMaker.ViewModel
         {
             EventHandler.DeleteEvent(SelectedEvent);
         }
-        //public async void HentdataFraDiskAsync()
-        //{
-        //    try
-        //    {
-        //        StorageFile file = await localfolder.GetFileAsync(filnavn);
-        //        string jsonText = await FileIO.ReadTextAsync(file);
-        //        this..Clear();
-        //        Filmliste.IndsætJson(jsonText);
-        //    }
-        //    catch (FileNotFoundException)
-        //    {
-        //        MessageDialog messageDialog = new MessageDialog("Har du husket at gemme?", "Fil ikke fundet");
-        //        await messageDialog.ShowAsync();
-        //    }
+        public async void GetDataFromDiscAsync()
+        {
+            try
+            {
+                StorageFile file = await localfolder.GetFileAsync(fileName);
+                string jsonText = await FileIO.ReadTextAsync(file);
+                this.SingletonRef.EventList.Clear();
+                SingletonRef.InsertJson(jsonText);
+            }
+            catch (FileNotFoundException)
+            {
+                MessageDialog messageDialog = new MessageDialog("Har du husket at gemme?", "Fil ikke fundet");
+                await messageDialog.ShowAsync();
+            }
 
-        //}
+        }
+
+        public async void SaveDataToDiscAsync()
+        {
+            string jsonText = this.SingletonRef.GetJson();
+            StorageFile file = await localfolder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
+            await FileIO.WriteTextAsync(file, jsonText);
+        }
 
         // Melder fejl - kan ikke finde OnPropertyChange?
         //[NotifyPropertyChangedInvocator]
