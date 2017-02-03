@@ -29,7 +29,8 @@
                 </Core:EventTriggerBehavior>
             </Interactivity:Interaction.Behaviors>
         </AppBarButton>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="41,204,0,0" TextWrapping="Wrap" Text="{Binding SelectedEvent}" VerticalAlignment="Top" Height="25" Width="254"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="56,259,0,0" TextWrapping="Wrap" Text="{Binding SelectedEvent}" VerticalAlignment="Top" Height="25" Width="254"/>
+        <AppBarButton x:Name="appBarButton1" HorizontalAlignment="Left" Icon="Cancel" Label="Delete Event&#xD;&#xA;" Margin="313,407,0,0" VerticalAlignment="Top" Command="{Binding DeleteEventCommand}"/>
 
     </Grid>
 </Page>
