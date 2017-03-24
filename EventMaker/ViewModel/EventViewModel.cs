@@ -12,6 +12,7 @@ using Windows.Storage;
 using Newtonsoft.Json;
 using Windows.UI.Popups;
 using System.IO;
+using EventMaker.Persistency;
 
 namespace EventMaker.ViewModel
 {
@@ -31,20 +32,18 @@ namespace EventMaker.ViewModel
         public TimeSpan Time { get; set; }
         public ICommand CreateEventCommand { get; set; }
         public RelayCommand DeleteEventCommand { get; set; }
-       // public RelayArgCommand<Event> DeleteEventCommand { get; private set; }
+        // public RelayArgCommand<Event> DeleteEventCommand { get; private set; }
         private MyEventHandler EventHandler { get; set; }
-        public RelayCommand HentDataCommand { get; private set; }
 
-        StorageFolder localfolder = null;
 
-        private readonly string fileName = "JsonText.jsonNY1";
 
 
 
         public Model.Event SelectedEvent
         {
             get { return selectedEvent; }
-            set {
+            set
+            {
                 selectedEvent = value;
                 OnPropertyChanged(nameof(SelectedEvent));
             }
@@ -61,7 +60,7 @@ namespace EventMaker.ViewModel
             EventHandler = new MyEventHandler(this);
 
             CreateEventCommand = new RelayCommand(EventHandler.CreateEvent);
-
+            PersistencySercive.HentDataTilDiskAsync();
             DeleteEventCommand = new RelayCommand(DeleteSelected, IsListEmptyCheck);
             //  DeleteEventCommand = new RelayArgCommand<Event>( ev => EventHandler.DeleteEvent(ev));
 
@@ -70,29 +69,7 @@ namespace EventMaker.ViewModel
         {
             EventHandler.DeleteEvent(SelectedEvent);
         }
-        public async void GetDataFromDiscAsync()
-        {
-            try
-            {
-                StorageFile file = await localfolder.GetFileAsync(fileName);
-                string jsonText = await FileIO.ReadTextAsync(file);
-                this.SingletonRef.EventList.Clear();
-                SingletonRef.InsertJson(jsonText);
-            }
-            catch (FileNotFoundException)
-            {
-                MessageDialog messageDialog = new MessageDialog("Har du husket at gemme?", "Fil ikke fundet");
-                await messageDialog.ShowAsync();
-            }
 
-        }
-
-        public async void SaveDataToDiscAsync()
-        {
-            string jsonText = this.SingletonRef.GetJson();
-            StorageFile file = await localfolder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
-            await FileIO.WriteTextAsync(file, jsonText);
-        }
 
         // Melder fejl - kan ikke finde OnPropertyChange?
         //[NotifyPropertyChangedInvocator]

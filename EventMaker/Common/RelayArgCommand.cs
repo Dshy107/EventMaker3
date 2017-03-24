@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace EventMaker.Common
 {
-  public class RelayArgCommand<T> : ICommand
+    public class RelayArgCommand<T> : ICommand
     {
         private readonly Action<T> _execute;
         private readonly Func<bool> _canExecute;

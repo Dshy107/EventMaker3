@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EventMaker.ViewModel;
 using EventMaker.Model;
 using EventMaker.Converter;
+using EventMaker.Persistency;
 
 namespace EventMaker.Handler
 {
@@ -23,11 +24,13 @@ namespace EventMaker.Handler
             Event newEvent = new Event(eventVM.Id, eventVM.Name, eventVM.Description, eventVM.Place, DateTimeConverter.DateTimeOffsetAndTimeSetToDateTime(eventVM.Date, eventVM.Time));
 
             EventCatalogSingleton.Instance.AddEvent(newEvent);
+            PersistencySercive.GemDataTilAsync();
         }
 
         public void DeleteEvent(Event ev)
         {
             EventCatalogSingleton.Instance.RemoveEvent(ev);
+            PersistencySercive.GemDataTilAsync();
         }
 
 
